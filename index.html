@@ -124,7 +124,7 @@
         .leader-info b { font-size: 1.1rem; color: var(--ag-blue); display: block; }
         .leader-info span { font-size: 0.8rem; color: var(--ag-red); font-weight: 700; text-transform: uppercase; }
 
-        /* PERSISTENT FOOTER SCRIPTURE */
+        /* PERSISTENT FOOTER SCRIPTURE - PROTESTANT SOURCE (BIBLE GATEWAY) */
         .scripture-footer {
             position: fixed; bottom: 0; left: 0; right: 0;
             background: var(--ag-blue); color: white;
@@ -132,7 +132,7 @@
             box-shadow: 0 -10px 30px rgba(0,0,0,0.4); z-index: 5000;
         }
         .footer-tag { font-size: 0.8rem; color: var(--ag-gold); font-weight: 800; text-transform: uppercase; margin-bottom: 6px; display: block; letter-spacing: 1.5px; }
-        #votd-text { font-size: 1rem; line-height: 1.6; font-style: italic; }
+        #votd-text { font-size: 0.95rem; line-height: 1.5; font-style: italic; }
 
         .btn { display: block; width: 100%; padding: 20px; border-radius: 15px; text-decoration: none; color: white; font-weight: 700; margin-bottom: 15px; text-align: center; }
         .btn-blue { background: var(--ag-blue); }
@@ -174,7 +174,7 @@
     </div>
 
     <div id="prayer" class="card" style="padding: 40px;">
-        <h2 style="text-align:center;">Prayer Request</h2>
+        <h2 style="text-align:center;">Prayer Support</h2>
         <a href="sms:+16059887105" class="btn btn-red">TEXT PRAYER TEAM: (605) 988-7105</a>
         <a href="mailto:Agchurch4e@gmail.com" class="btn btn-blue">EMAIL PRAYER REQUEST</a>
     </div>
@@ -182,7 +182,7 @@
     <div id="about" class="card" style="padding: 40px;">
         <h2 style="color:var(--ag-red); margin-top:0;">Our 4-E Vision</h2>
         <p style="background: #fff8f8; padding: 25px; border-radius: 20px; border-left: 8px solid var(--ag-red);">
-            "To <b>Equip</b>, <b>Evangelize</b>, <b>Exalt</b>, and <b>Edify</b> the Nepali community."
+            "To <b>Equip</b>, <b>Evangelize</b>, <b>Exalt</b>, and <b>Edify</b> the Nepali community, building a vibrant legacy of faith across generations."
         </p>
         
         <h3 style="margin-top: 40px;">Leadership Team</h3>
@@ -199,8 +199,8 @@
 </div>
 
 <div class="scripture-footer">
-    <span class="footer-tag">Today's Holy Word (NNRV)</span>
-    <div id="votd-text">Gathering the Bread of Life...</div>
+    <span class="footer-tag">Today's Holy Word (Protestant Feed)</span>
+    <div id="votd-text">Fetching the Word...</div>
 </div>
 
 <script type="text/javascript">
@@ -213,10 +213,12 @@ function googleTranslateElementInit() {
 <script>
     function toggleDarkMode() { document.body.classList.toggle('dark-mode'); }
     
+    // Using BibleGateway JSON API for Protestant Daily Verse
     function displayVotd(data) { 
-        document.getElementById('votd-text').innerHTML = `"${data.votd.text}" <br><strong>— ${data.votd.display_ref}</strong>`; 
+        document.getElementById('votd-text').innerHTML = `"${data.votd.text}" <br><strong>— ${data.votd.display_ref} (NNRV)</strong>`; 
     }
 
+    // Dynamic Script Injection to prevent Cross-Origin issues
     const script = document.createElement('script');
     script.src = "https://www.biblegateway.com/votd/votd.asp?format=json&version=NNRV&callback=displayVotd";
     document.body.appendChild(script);
