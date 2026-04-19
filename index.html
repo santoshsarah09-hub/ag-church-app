@@ -70,8 +70,8 @@
         .viewer-frame { width: 100%; height: 70vh; border: none; }
 
         /* SPIRITUAL NEEDS SECTION */
-        .spiritual-needs { margin-top: 30px; background: #fdfdfd; padding: 20px; border-radius: 15px; border: 1px solid #eee; }
-        .needs-select { width: 100%; padding: 12px; border-radius: 8px; border: 2px solid var(--ag-blue); font-family: 'Poppins'; margin-top: 10px; }
+        .spiritual-needs { margin-top: 10px; background: #fdfdfd; padding: 20px; border-radius: 15px; border: 1px solid #eee; }
+        .needs-select { width: 100%; padding: 12px; border-radius: 8px; border: 2px solid var(--ag-blue); font-family: 'Poppins', sans-serif; margin-top: 10px; font-size: 1rem; }
         .scripture-result { margin-top: 15px; padding: 15px; background: #fff8e1; border-radius: 10px; border-left: 5px solid var(--ag-gold); display: none; }
 
         /* FIXED FOOTER */
@@ -110,31 +110,45 @@
 
 <div class="container">
     <div id="calendar" class="card active"><iframe src="https://calendar.google.com/calendar/embed?src=Agchurch4e%40gmail.com&ctz=America%2FChicago" class="viewer-frame"></iframe></div>
-    <div id="bible" class="card"><iframe src="https://www.biblegateway.com/passage/?search=John+1&version=NNRV" class="viewer-frame"></iframe></div>
+    <div id="bible" class="card"><iframe src="https://www.biblegateway.com/passage/?search=John+1&version=NNRV" class="viewer-frame" id="bible-iframe"></iframe></div>
     <div id="songs" class="card"><iframe src="https://www.nepalichristiansongs.com/" class="viewer-frame"></iframe></div>
     
-    <div id="prayer" class="card" style="padding: 30px;">
+    <div id="prayer" class="card" style="padding: 25px;">
         <h2 style="text-align:center;">Prayer & Spiritual Care</h2>
         <a href="sms:+16059887105" class="btn btn-red">TEXT PRAYER TEAM: (605) 988-7105</a>
         
         <div class="spiritual-needs">
             <h3 style="margin-top:0;">Where to look in the Bible when...</h3>
-            <p style="font-size:0.85rem; color:#666;">Select your current need to find God's promise:</p>
+            <p style="font-size:0.85rem; color:#666;">Choose your current situation to see God's Word:</p>
             <select class="needs-select" onchange="findScripture(this.value)">
-                <option value="">-- Select Spiritual Need --</option>
-                <option value="anxious">I am Feeling Anxious</option>
-                <option value="weak">I Need Strength</option>
-                <option value="lonely">I Feel Lonely</option>
-                <option value="guilty">I Feel Guilty or Need Forgiveness</option>
-                <option value="grieving">I am Grieving or Sad</option>
-                <option value="angry">I am Struggling with Anger</option>
-                <option value="direction">I Need Direction for my Life</option>
+                <option value="">-- Select Your Situation --</option>
+                <optgroup label="Emotions">
+                    <option value="anxious">I am Anxious / Worried</option>
+                    <option value="lonely">I feel Lonely</option>
+                    <option value="angry">I am Angry</option>
+                    <option value="depressed">I feel Depressed / Discouraged</option>
+                    <option value="grieving">I am Grieving a loss</option>
+                    <option value="guilty">I feel Guilty</option>
+                </optgroup>
+                <optgroup label="Life Challenges">
+                    <option value="sick">I am Sick or in Pain</option>
+                    <option value="financial">I have Financial Troubles</option>
+                    <option value="tempted">I am being Tempted</option>
+                    <option value="persecuted">I am being Treated Unfairly</option>
+                    <option value="direction">I need Direction / Wisdom</option>
+                </optgroup>
+                <optgroup label="Faith & Growth">
+                    <option value="doubt">I am Doubting my Faith</option>
+                    <option value="peace">I need Inner Peace</option>
+                    <option value="strength">I need Strength to go on</option>
+                    <option value="gratitude">I want to give Thanks</option>
+                </optgroup>
             </select>
 
             <div id="need-result" class="scripture-result">
                 <span id="need-label" style="font-weight:bold; color:var(--ag-red); display:block; margin-bottom:5px;"></span>
-                <span id="need-verse" style="font-style:italic; font-size:1.1rem;"></span>
-                <button onclick="openBibleFromNeed()" style="margin-top:10px; padding:5px 10px; border-radius:5px; border:none; background:var(--ag-blue); color:white; cursor:pointer; font-size:0.8rem;">Read Full Chapter</button>
+                <span id="need-verse" style="font-style:italic; font-size:1.1rem; display:block;"></span>
+                <button onclick="openBibleFromNeed()" style="margin-top:12px; padding:10px 15px; border-radius:8px; border:none; background:var(--ag-blue); color:white; cursor:pointer; font-weight:bold; width:100%;">Read Full Chapter in Bible Tab</button>
             </div>
         </div>
     </div>
@@ -175,12 +189,20 @@ function googleTranslateElementInit() {
 
     const needsMap = {
         "anxious": { label: "When Anxious:", verse: "Philippians 4:6-7", ref: "Philippians+4" },
-        "weak": { label: "When Weak:", verse: "Isaiah 40:31", ref: "Isaiah+40" },
-        "lonely": { label: "When Lonely:", verse: "Hebrews 13:5", ref: "Hebrews+13" },
-        "guilty": { label: "For Forgiveness:", verse: "1 John 1:9", ref: "1+John+1" },
-        "grieving": { label: "When Grieving:", verse: "Matthew 5:4", ref: "Matthew+5" },
-        "angry": { label: "When Angry:", verse: "Ephesians 4:26-27", ref: "Ephesians+4" },
-        "direction": { label: "For Direction:", verse: "Proverbs 3:5-6", ref: "Proverbs+3" }
+        "lonely": { label: "When Lonely:", verse: "Psalm 23", ref: "Psalm+23" },
+        "angry": { label: "When Angry:", verse: "Ephesians 4:26-32", ref: "Ephesians+4" },
+        "depressed": { label: "When Depressed:", verse: "Psalm 42", ref: "Psalm+42" },
+        "grieving": { label: "When Grieving:", verse: "2 Corinthians 1:3-4", ref: "2+Corinthians+1" },
+        "guilty": { label: "When feeling Guilty:", verse: "1 John 1:9", ref: "1+John+1" },
+        "sick": { label: "When Sick/In Pain:", verse: "James 5:14-15", ref: "James+5" },
+        "financial": { label: "In Financial Trouble:", verse: "Philippians 4:19", ref: "Philippians+4" },
+        "tempted": { label: "When Tempted:", verse: "1 Corinthians 10:13", ref: "1+Corinthians+10" },
+        "persecuted": { label: "When Persecuted:", verse: "Matthew 5:10-12", ref: "Matthew+5" },
+        "direction": { label: "Seeking Direction:", verse: "Proverbs 3:5-6", ref: "Proverbs+3" },
+        "doubt": { label: "When Doubting:", verse: "Mark 9:24", ref: "Mark+9" },
+        "peace": { label: "Need Inner Peace:", verse: "John 14:27", ref: "John+14" },
+        "strength": { label: "Need Strength:", verse: "Isaiah 40:31", ref: "Isaiah+40" },
+        "gratitude": { label: "Giving Thanks:", verse: "Psalm 100", ref: "Psalm+100" }
     };
 
     function findScripture(need) {
@@ -197,7 +219,7 @@ function googleTranslateElementInit() {
 
     function openBibleFromNeed() {
         showTab('bible');
-        document.querySelector('#bible iframe').src = `https://www.biblegateway.com/passage/?search=${currentNeedVerse}&version=NNRV`;
+        document.getElementById('bible-iframe').src = `https://www.biblegateway.com/passage/?search=${currentNeedVerse}&version=NNRV`;
     }
 
     const script = document.createElement('script');
@@ -214,7 +236,7 @@ function googleTranslateElementInit() {
         document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
         document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
         document.getElementById(tabId).classList.add('active');
-        // Find tab element to set active
+        // Update tab styling manually to ensure "Active" state is visible
         const tabs = document.querySelectorAll('.tab');
         tabs.forEach(tab => {
             if(tab.innerText.toLowerCase().includes(tabId.toLowerCase())) tab.classList.add('active');
