@@ -13,7 +13,6 @@
             --bg: #f8f9fa;
             --card-bg: #ffffff;
             --text-main: #212121;
-            --shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
 
         .dark-mode {
@@ -23,12 +22,19 @@
             --text-main: #e0e0e0;
         }
 
-        body { font-family: 'Poppins', sans-serif; margin: 0; background: var(--bg); color: var(--text-main); transition: 0.4s; -webkit-font-smoothing: antialiased; }
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            margin: 0; 
+            background: var(--bg); 
+            color: var(--text-main); 
+            transition: 0.4s; 
+            padding-bottom: 220px; /* Space for fixed footer */
+        }
         
         /* BOLD PROFESSIONAL HEADER */
         header {
             background: linear-gradient(135deg, var(--ag-blue) 0%, #003366 100%);
-            padding: 45px 20px;
+            padding: 40px 20px;
             text-align: center;
             color: white;
             border-bottom: 6px solid var(--ag-red);
@@ -37,22 +43,19 @@
 
         header h1 {
             font-family: 'Montserrat', sans-serif;
-            font-size: 2.8rem;
+            font-size: 2.6rem;
             font-weight: 900;
             margin: 0;
-            letter-spacing: -1.5px;
             text-transform: uppercase;
             line-height: 1.0;
-            background: linear-gradient(to bottom, #ffffff, #cccccc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
         }
 
         header .nepali-brand {
             color: var(--ag-gold);
             font-weight: 600;
-            margin-top: 15px;
-            font-size: 1.3rem;
+            margin-top: 12px;
+            font-size: 1.2rem;
             display: block;
         }
 
@@ -78,65 +81,49 @@
         .nav-tabs::-webkit-scrollbar { display: none; }
 
         .tab { 
-            flex: 1; 
-            padding: 20px 15px; 
-            text-align: center; 
-            cursor: pointer; 
-            font-size: 0.75rem; 
-            font-weight: 700; 
-            color: #777; 
-            border-bottom: 4px solid transparent; 
-            min-width: 100px; 
-            white-space: nowrap; 
-            transition: 0.3s;
-            text-transform: uppercase;
+            flex: 1; padding: 18px 10px; text-align: center; cursor: pointer; font-size: 0.75rem; 
+            font-weight: 700; color: #777; border-bottom: 4px solid transparent; 
+            min-width: 95px; white-space: nowrap; transition: 0.3s;
         }
-        .tab.active { border-bottom: 4px solid var(--ag-red); color: var(--ag-blue); background: rgba(0,0,0,0.01); }
+        .tab.active { border-bottom: 4px solid var(--ag-red); color: var(--ag-blue); background: rgba(0,0,0,0.02); }
 
-        .container { max-width: 1000px; margin: 25px auto; padding: 0 20px 160px 20px; }
-        .card { 
-            background: var(--card-bg); 
-            border-radius: 25px; 
-            box-shadow: var(--shadow); 
-            display: none; 
-            overflow: hidden; 
-            animation: appEntrance 0.5s ease; 
-        }
+        .container { max-width: 1000px; margin: 20px auto; padding: 0 15px; }
+        .card { background: var(--card-bg); border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); display: none; overflow: hidden; }
         .card.active { display: block; }
 
-        @keyframes appEntrance { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        .viewer-frame { width: 100%; height: 75vh; border: none; background: #fff; }
+        .viewer-frame { width: 100%; height: 70vh; border: none; background: #fff; }
 
         /* LEADERSHIP STYLING */
         .leader-box { 
-            display: flex; 
-            align-items: center; 
-            background: #fdfdfd; 
-            padding: 18px; 
-            border-radius: 18px; 
-            border: 1px solid #eee; 
-            margin-bottom: 12px;
-            transition: 0.3s;
+            display: flex; align-items: center; background: rgba(0,0,0,0.03); 
+            padding: 15px; border-radius: 12px; margin-bottom: 12px; border-left: 5px solid var(--ag-blue); 
         }
-        .dark-mode .leader-box { background: #252525; border-color: #333; }
-        .leader-box:hover { border-left: 8px solid var(--ag-blue); }
         .leader-info b { font-size: 1.1rem; color: var(--ag-blue); display: block; }
-        .leader-info span { font-size: 0.8rem; color: var(--ag-red); font-weight: 700; text-transform: uppercase; }
+        .leader-info span { font-size: 0.85rem; color: var(--ag-red); font-weight: 600; }
 
-        /* PERSISTENT FOOTER SCRIPTURE - PROTESTANT SOURCE (BIBLE GATEWAY) */
-        .scripture-footer {
+        /* FIXED FOOTER (SOCIAL + SCRIPTURE) */
+        .footer-fixed {
             position: fixed; bottom: 0; left: 0; right: 0;
-            background: var(--ag-blue); color: white;
-            padding: 22px 30px; border-top: 5px solid var(--ag-red);
-            box-shadow: 0 -10px 30px rgba(0,0,0,0.4); z-index: 5000;
+            z-index: 5000;
+            background: var(--ag-blue);
+            color: white;
+            border-top: 5px solid var(--ag-red);
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
         }
-        .footer-tag { font-size: 0.8rem; color: var(--ag-gold); font-weight: 800; text-transform: uppercase; margin-bottom: 6px; display: block; letter-spacing: 1.5px; }
-        #votd-text { font-size: 0.95rem; line-height: 1.5; font-style: italic; }
 
-        .btn { display: block; width: 100%; padding: 20px; border-radius: 15px; text-decoration: none; color: white; font-weight: 700; margin-bottom: 15px; text-align: center; }
-        .btn-blue { background: var(--ag-blue); }
+        .social-bar {
+            display: flex; justify-content: center; gap: 25px; padding: 12px; background: rgba(255,255,255,0.08);
+        }
+        .social-link { color: white; text-decoration: none; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+        .social-link:hover { color: var(--ag-gold); }
+
+        .scripture-footer { padding: 18px 20px; text-align: center; min-height: 60px; }
+        .footer-tag { font-size: 0.75rem; color: var(--ag-gold); font-weight: 800; text-transform: uppercase; margin-bottom: 6px; display: block; letter-spacing: 1px; }
+        #votd-text { font-size: 0.95rem; line-height: 1.5; font-style: italic; font-weight: 400; }
+
+        .btn { display: block; width: 100%; padding: 18px; border-radius: 12px; text-decoration: none; color: white; font-weight: bold; margin-bottom: 12px; text-align: center; }
         .btn-red { background: var(--ag-red); }
+        .btn-blue { background: var(--ag-blue); }
     </style>
 </head>
 <body>
@@ -147,7 +134,7 @@
 </div>
 
 <header>
-    <h1>Awakening Generations Church</h1>
+    <h1>Awakening Generations</h1>
     <span class="nepali-brand">अवेकनिङ जेनेरेसन चर्च</span>
 </header>
 
@@ -174,33 +161,40 @@
     </div>
 
     <div id="prayer" class="card" style="padding: 40px;">
-        <h2 style="text-align:center;">Prayer Support</h2>
+        <h2 style="text-align:center; font-family: 'Montserrat';">Prayer Support</h2>
+        <p style="text-align:center; color:#666; margin-bottom: 30px;">प्रार्थनाको लागि हामीलाई सम्पर्क गर्नुहोस्।</p>
         <a href="sms:+16059887105" class="btn btn-red">TEXT PRAYER TEAM: (605) 988-7105</a>
         <a href="mailto:Agchurch4e@gmail.com" class="btn btn-blue">EMAIL PRAYER REQUEST</a>
     </div>
 
     <div id="about" class="card" style="padding: 40px;">
-        <h2 style="color:var(--ag-red); margin-top:0;">Our 4-E Vision</h2>
+        <h2 style="color:var(--ag-red); margin-top:0; font-family: 'Montserrat';">Our 4-E Vision</h2>
         <p style="background: #fff8f8; padding: 25px; border-radius: 20px; border-left: 8px solid var(--ag-red);">
             "To <b>Equip</b>, <b>Evangelize</b>, <b>Exalt</b>, and <b>Edify</b> the Nepali community, building a vibrant legacy of faith across generations."
         </p>
         
-        <h3 style="margin-top: 40px;">Leadership Team</h3>
+        <h3 style="margin-top: 40px; font-family: 'Montserrat'; border-bottom: 2px solid #eee; padding-bottom: 10px;">Leadership Team</h3>
         <div class="leader-box"><div class="leader-info"><b>Ps. Santosh Sharma</b><span>Lead Pastor | (605) 323-5933</span></div></div>
         <div class="leader-box"><div class="leader-info"><b>Ps. Prem Rai</b><span>Youth Pastor | (605) 400-7152</span></div></div>
         <div class="leader-box"><div class="leader-info"><b>Roshani Lamsal Sharma</b><span>Secretary | (605) 774-5474</span></div></div>
         <div class="leader-box"><div class="leader-info"><b>Hemon Sanyashi</b><span>Treasurer | (605) 400-8914</span></div></div>
 
-        <h3>Church Board</h3>
-        <p style="line-height: 2.2; color: #555;">
+        <h3 style="margin-top: 40px; font-family: 'Montserrat'; border-bottom: 2px solid #eee; padding-bottom: 10px;">Church Board</h3>
+        <p style="line-height: 2.2; font-size: 1.05rem; color: #555;">
             Ps. Sarah Sharma • Ps. Rita Rai • Dinesh Rai • Anan Rai • Amulya Rai • Kissan Bhujel
         </p>
     </div>
 </div>
 
-<div class="scripture-footer">
-    <span class="footer-tag">Today's Holy Word (Protestant Feed)</span>
-    <div id="votd-text">Fetching the Word...</div>
+<div class="footer-fixed">
+    <div class="social-bar">
+        <a href="https://www.facebook.com/AGCNepali" target="_blank" class="social-link">Facebook</a>
+        <a href="https://www.instagram.com/ag_nepali_church/" target="_blank" class="social-link">Instagram</a>
+    </div>
+    <div class="scripture-footer">
+        <span class="footer-tag">Today's Holy Word (NNRV)</span>
+        <div id="votd-text">Fetching the Bread of Life...</div>
+    </div>
 </div>
 
 <script type="text/javascript">
@@ -213,16 +207,21 @@ function googleTranslateElementInit() {
 <script>
     function toggleDarkMode() { document.body.classList.toggle('dark-mode'); }
     
-    // Using BibleGateway JSON API for Protestant Daily Verse
+    // Automatic Scripture Loader (Protestant Feed)
     function displayVotd(data) { 
-        document.getElementById('votd-text').innerHTML = `"${data.votd.text}" <br><strong>— ${data.votd.display_ref} (NNRV)</strong>`; 
+        if(data && data.votd) {
+            document.getElementById('votd-text').innerHTML = `"${data.votd.text}" <br><strong>— ${data.votd.display_ref}</strong>`; 
+        }
     }
 
-    // Dynamic Script Injection to prevent Cross-Origin issues
-    const script = document.createElement('script');
-    script.src = "https://www.biblegateway.com/votd/votd.asp?format=json&version=NNRV&callback=displayVotd";
-    document.body.appendChild(script);
+    // Force script execution for the Daily Verse
+    (function() {
+        const script = document.createElement('script');
+        script.src = "https://www.biblegateway.com/votd/votd.asp?format=json&version=NNRV&callback=displayVotd";
+        document.body.appendChild(script);
+    })();
 
+    // Tab Switching Logic
     function showTab(tabId) {
         document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
         document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
