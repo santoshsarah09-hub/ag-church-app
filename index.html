@@ -28,7 +28,7 @@
             background: var(--bg); 
             color: var(--text-main); 
             transition: 0.3s; 
-            padding-bottom: 240px; /* Essential for floating footer */
+            padding-bottom: 240px; /* Space for the persistent Daily Bread footer */
         }
         
         /* HEADER - GLOWING WAVE EFFECT */
@@ -57,7 +57,6 @@
             text-transform: uppercase;
             line-height: 1.0;
             letter-spacing: -1px;
-            text-shadow: 0 0 10px rgba(255,255,255,0.8);
             animation: pulseGlow 2.5s ease-in-out infinite alternate;
         }
 
@@ -67,53 +66,31 @@
         }
 
         header .nepali-brand { 
-            color: white; 
-            font-weight: 600; 
-            font-size: 1.3rem; 
-            display: block; 
-            margin-top: 15px; 
-            opacity: 0.95; 
-            letter-spacing: 1px;
+            color: white; font-weight: 600; font-size: 1.3rem; 
+            display: block; margin-top: 15px; opacity: 0.95; letter-spacing: 1px;
         }
 
+        /* TOP NAVIGATION UTILITY */
         .top-nav { 
-            background: var(--ag-blue); 
-            padding: 10px 15px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            position: sticky;
-            top: 0;
-            z-index: 5002;
+            background: var(--ag-blue); padding: 10px 15px; 
+            display: flex; justify-content: space-between; align-items: center; 
+            position: sticky; top: 0; z-index: 5002;
         }
         #google_translate_element { background: white; border-radius: 5px; padding: 2px; }
 
-        /* TABS - BULKY & EXPLOSIVE */
+        /* TABS - BULKY, EXPLOSIVE, 3D */
         .nav-tabs { 
-            display: flex; 
-            background: transparent; 
-            padding: 12px; 
-            gap: 12px;
-            overflow-x: auto;
-            scrollbar-width: none;
+            display: flex; background: transparent; padding: 12px; gap: 12px;
+            overflow-x: auto; scrollbar-width: none;
         }
         .nav-tabs::-webkit-scrollbar { display: none; }
 
         .tab { 
-            flex: 1; 
-            padding: 22px 15px; 
-            text-align: center; 
-            cursor: pointer; 
-            font-size: 0.8rem; 
-            font-weight: 800; 
-            color: white; 
-            background: var(--ag-blue);
-            border-radius: 18px; 
-            box-shadow: 0 5px 0 #000; 
-            min-width: 115px; 
-            white-space: nowrap; 
-            transition: all 0.2s ease;
-            text-transform: uppercase;
+            flex: 1; padding: 22px 15px; text-align: center; cursor: pointer; 
+            font-size: 0.8rem; font-weight: 800; color: white; 
+            background: var(--ag-blue); border-radius: 18px; 
+            box-shadow: 0 5px 0 #000; min-width: 115px; 
+            white-space: nowrap; transition: all 0.2s ease; text-transform: uppercase;
         }
 
         .tab:active { transform: translateY(4px); box-shadow: 0 1px 0 #000; }
@@ -126,12 +103,9 @@
 
         .container { max-width: 1000px; margin: 15px auto; padding: 0 15px; }
         .card { 
-            background: var(--card-bg); 
-            border-radius: 30px; 
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1); 
-            display: none; 
-            overflow: hidden; 
-            animation: explodeIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            background: var(--card-bg); border-radius: 30px; 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1); display: none; 
+            overflow: hidden; animation: explodeIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
         }
         .card.active { display: block; }
 
@@ -140,11 +114,19 @@
             to { opacity: 1; transform: scale(1); }
         }
 
-        .viewer-frame { width: 100%; height: 75vh; border: none; }
+        .viewer-frame { width: 100%; height: 75vh; border: none; background: #fff; }
 
-        /* SPIRITUAL NEEDS */
-        .spiritual-needs { margin-top: 10px; background: #fdfdfd; padding: 25px; border-radius: 25px; border: 2px solid #eee; }
-        .needs-select { width: 100%; padding: 18px; border-radius: 15px; border: 3px solid var(--ag-blue); font-family: 'Poppins'; font-weight: 800; font-size: 1rem; color: var(--ag-blue); }
+        /* SPIRITUAL CARE STYLING */
+        .spiritual-needs { background: #fdfdfd; padding: 25px; border-radius: 25px; border: 2px solid #eee; margin-top: 10px; }
+        .needs-select { 
+            width: 100%; padding: 18px; border-radius: 15px; border: 3px solid var(--ag-blue); 
+            font-family: 'Poppins'; font-weight: 800; font-size: 1rem; color: var(--ag-blue); 
+        }
+        .result-box { 
+            margin-top:20px; padding:20px; background:#fff8e1; border-radius:20px; 
+            border-left:10px solid var(--ag-gold); display:none; 
+        }
+        .verse-list { padding-left:20px; font-style:italic; font-size:1.1rem; line-height:1.8; color: #444; }
 
         /* FIXED FOOTER */
         .fixed-footer { 
@@ -156,17 +138,19 @@
         .social-link { color: white; text-decoration: none; font-size: 0.85rem; font-weight: 900; text-transform: uppercase; }
         
         .scripture-box { padding: 20px 25px; text-align: center; }
-        .scripture-tag { font-size: 0.75rem; color: var(--ag-gold); font-weight: 900; text-transform: uppercase; margin-bottom: 8px; display: block; letter-spacing: 1px; }
-        #daily-bread-text { font-size: 1rem; line-height: 1.6; font-style: italic; font-weight: 400; }
+        .scripture-tag { font-size: 0.75rem; color: var(--ag-gold); font-weight: 900; text-transform: uppercase; display: block; margin-bottom: 8px; }
+        #daily-bread-text { font-size: 1rem; font-style: italic; line-height: 1.6; }
 
-        /* BUTTONS & LISTS */
-        .btn { display: block; width: 100%; padding: 20px; border-radius: 15px; text-decoration: none; color: white; font-weight: 900; margin-bottom: 15px; text-align: center; box-shadow: 0 5px 0 rgba(0,0,0,0.3); transition: 0.2s; }
+        /* LEADERSHIP */
+        .leader-box { 
+            display: flex; align-items: center; background: rgba(0,0,0,0.03); 
+            padding: 18px; border-radius: 18px; margin-bottom: 15px; border-left: 8px solid var(--ag-blue); 
+        }
+        .leader-info b { font-size: 1.15rem; color: var(--ag-blue); display: block; }
+
+        .btn { display: block; width: 100%; padding: 20px; border-radius: 15px; text-decoration: none; color: white; font-weight: 900; margin-bottom: 15px; text-align: center; box-shadow: 0 5px 0 rgba(0,0,0,0.3); }
         .btn-red { background: var(--ag-red); }
         .btn-blue { background: var(--ag-blue); }
-        .btn:active { transform: translateY(3px); box-shadow: 0 2px 0 rgba(0,0,0,0.2); }
-
-        .leader-box { display: flex; align-items: center; background: rgba(0,0,0,0.03); padding: 18px; border-radius: 18px; margin-bottom: 15px; border-left: 8px solid var(--ag-blue); }
-        .leader-info b { font-size: 1.15rem; color: var(--ag-blue); display: block; }
     </style>
 </head>
 <body>
@@ -177,7 +161,7 @@
 </div>
 
 <header>
-    <h1>Awakening Generations</h1>
+    <h1>Awakening Generations Church</h1>
     <span class="nepali-brand">अवेकनिङ जेनेरेसन चर्च</span>
 </header>
 
@@ -202,44 +186,57 @@
         <iframe src="https://www.nepalichristiansongs.com/" class="viewer-frame"></iframe>
     </div>
     
-    <div id="prayer" class="card" style="padding: 30px;">
-        <h2 style="text-align:center; font-family:'Montserrat';">Spiritual Care</h2>
+    <div id="prayer" class="card" style="padding: 25px;">
+        <h2 style="text-align:center;">Spiritual Care & Prayer</h2>
         <a href="sms:+16059887105" class="btn btn-red">TEXT PRAYER TEAM</a>
         
         <div class="spiritual-needs">
-            <h3 style="margin-top:0;">Divine Promises</h3>
-            <p style="font-size:0.9rem; color:#666;">Choose a situation to receive God's Word:</p>
+            <h3>Where to look in the Bible...</h3>
             <select class="needs-select" onchange="findScripture(this.value)">
                 <option value="">-- How are you feeling? --</option>
-                <option value="anxious">Anxious / Worried</option>
-                <option value="lonely">Lonely</option>
-                <option value="angry">Angry / Frustrated</option>
-                <option value="sick">Sick / In Pain</option>
-                <option value="weak">Need Strength</option>
-                <option value="grieving">Grieving / Sad</option>
-                <option value="direction">Need Direction</option>
-                <option value="guilty">Need Forgiveness</option>
+                <optgroup label="Emotions">
+                    <option value="anxious">Anxious / Worried</option>
+                    <option value="lonely">Lonely</option>
+                    <option value="angry">Angry / Resentful</option>
+                    <option value="depressed">Depressed / Discouraged</option>
+                    <option value="grieving">Grieving / Sad</option>
+                    <option value="guilty">Guilty / Need Forgiveness</option>
+                    <option value="fearful">Fearful / Afraid</option>
+                </optgroup>
+                <optgroup label="Life Challenges">
+                    <option value="sick">Sick / In Pain</option>
+                    <option value="financial">Financial Troubles</option>
+                    <option value="weak">Need Strength</option>
+                    <option value="tempted">Being Tempted</option>
+                    <option value="direction">Need Wisdom / Direction</option>
+                    <option value="unfair">Treated Unfairly</option>
+                    <option value="tired">Tired / Burned Out</option>
+                </optgroup>
+                <optgroup label="Faith Journey">
+                    <option value="doubt">Doubting Faith</option>
+                    <option value="peace">Need Inner Peace</option>
+                    <option value="gratitude">Thankful / Grateful</option>
+                    <option value="new">Starting Something New</option>
+                    <option value="bold">Need Boldness / Courage</option>
+                </optgroup>
             </select>
-            <div id="need-result" style="margin-top:20px; padding:20px; background:#fff8e1; border-radius:20px; border-left:10px solid var(--ag-gold); display:none;">
+            <div id="need-result" class="result-box">
                 <span id="need-label" style="font-weight:900; color:var(--ag-red); font-size:1.2rem; display:block; margin-bottom:10px;"></span>
-                <ul id="verse-list" style="padding-left:20px; font-style:italic; font-size:1.1rem; line-height:1.8;"></ul>
+                <ul id="verse-list" class="verse-list"></ul>
                 <button onclick="openBibleFromNeed()" style="width:100%; padding:20px; background:var(--ag-blue); color:white; border:none; border-radius:15px; font-weight:900; cursor:pointer; margin-top:15px; text-transform:uppercase;">Read Full Chapter</button>
             </div>
         </div>
     </div>
 
-    <div id="about" class="card" style="padding: 35px;">
-        <h2 style="color:var(--ag-red); margin-top:0; font-family:'Montserrat';">OUR 4-E VISION</h2>
+    <div id="about" class="card" style="padding: 30px;">
+        <h2 style="color:var(--ag-red); margin-top:0;">Our 4-E Vision</h2>
         <p style="font-size:1.1rem; border-left:5px solid var(--ag-red); padding-left:15px;"><b>Equip • Evangelize • Exalt • Edify</b></p>
-        
-        <h3 style="margin-top:35px;">Leadership Team</h3>
+        <h3 style="margin-top:35px;">Leadership</h3>
         <div class="leader-box"><div class="leader-info"><b>Ps. Santosh Sharma</b><small>Lead Pastor | (605) 323-5933</small></div></div>
         <div class="leader-box"><div class="leader-info"><b>Ps. Prem Rai</b><small>Youth Pastor | (605) 400-7152</small></div></div>
         <div class="leader-box"><div class="leader-info"><b>Roshani Lamsal Sharma</b><small>Secretary | (605) 774-5474</small></div></div>
         <div class="leader-box"><div class="leader-info"><b>Hemon Sanyashi</b><small>Treasurer | (605) 400-8914</small></div></div>
-
-        <h3>Church Board</h3>
-        <p style="line-height:2.0; font-weight:600;">Ps. Sarah Sharma, Ps. Rita Rai, Dinesh Rai, Anan Rai, Amulya Rai, Kissan Bhujel</p>
+        <p><b>Board:</b> Sarah Sharma, Rita Rai, Dinesh Rai, Anan Rai, Amulya Rai, Kissan Bhujel</p>
     </div>
 </div>
 
@@ -266,14 +263,25 @@ function googleTranslateElementInit() {
     
     let currentNeedVerse = "";
     const needsMap = {
-        "anxious": { label: "Promises for Anxiety:", verses: ["Philippians 4:6-7", "1 Peter 5:7", "Matthew 6:34"], ref: "Philippians+4" },
-        "lonely": { label: "Promises for Loneliness:", verses: ["Psalm 23:4", "Hebrews 13:5", "Isaiah 41:10"], ref: "Psalm+23" },
-        "angry": { label: "Promises for Anger:", verses: ["James 1:19-20", "Proverbs 15:1"], ref: "James+1" },
-        "sick": { label: "Promises for Healing:", verses: ["James 5:14-15", "Isaiah 53:5", "Psalm 103:3"], ref: "James+5" },
-        "weak": { label: "Promises for Strength:", verses: ["Isaiah 40:31", "Philippians 4:13", "2 Cor 12:9"], ref: "Isaiah+40" },
-        "grieving": { label: "Promises for Grief:", verses: ["Matthew 5:4", "Psalm 34:18", "John 11:25"], ref: "Matthew+5" },
-        "direction": { label: "Promises for Guidance:", verses: ["Proverbs 3:5-6", "Psalm 32:8"], ref: "Proverbs+3" },
-        "guilty": { label: "Promises for Forgiveness:", verses: ["1 John 1:9", "Psalm 103:12"], ref: "1+John+1" }
+        "anxious": { label: "When Anxious:", verses: ["Philippians 4:6-7", "1 Peter 5:7", "Psalm 94:19"], ref: "Philippians+4" },
+        "lonely": { label: "When Lonely:", verses: ["Psalm 23:4", "Hebrews 13:5", "Matthew 28:20"], ref: "Psalm+23" },
+        "angry": { label: "When Angry:", verses: ["James 1:19-20", "Proverbs 15:1"], ref: "James+1" },
+        "depressed": { label: "When Discouraged:", verses: ["Psalm 42:11", "Isaiah 41:10"], ref: "Psalm+42" },
+        "grieving": { label: "When Grieving:", verses: ["Matthew 5:4", "Psalm 34:18"], ref: "Matthew+5" },
+        "guilty": { label: "When Guilty:", verses: ["1 John 1:9", "Psalm 103:12"], ref: "1+John+1" },
+        "fearful": { label: "When Afraid:", verses: ["2 Timothy 1:7", "Psalm 27:1"], ref: "2+Timothy+1" },
+        "sick": { label: "When Sick:", verses: ["James 5:14-15", "Isaiah 53:5"], ref: "James+5" },
+        "financial": { label: "Financial Need:", verses: ["Philippians 4:19", "Matthew 6:33"], ref: "Philippians+4" },
+        "weak": { label: "Need Strength:", verses: ["Isaiah 40:31", "Philippians 4:13"], ref: "Isaiah+40" },
+        "tempted": { label: "When Tempted:", verses: ["1 Cor 10:13", "James 4:7"], ref: "1+Corinthians+10" },
+        "direction": { label: "Need Wisdom:", verses: ["Proverbs 3:5-6", "James 1:5"], ref: "Proverbs+3" },
+        "unfair": { label: "When Treated Unfairly:", verses: ["1 Peter 2:21-23", "Romans 12:19"], ref: "1+Peter+2" },
+        "tired": { label: "When Tired:", verses: ["Matthew 11:28-30", "Galatians 6:9"], ref: "Matthew+11" },
+        "doubt": { label: "When Doubting:", verses: ["Mark 9:24", "Hebrews 11:1"], ref: "Mark+9" },
+        "peace": { label: "Inner Peace:", verses: ["John 14:27", "Isaiah 26:3"], ref: "John+14" },
+        "gratitude": { label: "Grateful Heart:", verses: ["Psalm 100", "1 Thess 5:18"], ref: "Psalm+100" },
+        "new": { label: "New Chapter:", verses: ["Joshua 1:9", "Lamentations 3:22"], ref: "Joshua+1" },
+        "bold": { label: "Need Courage:", verses: ["Acts 4:31", "Ephesians 6:10"], ref: "Acts+4" }
     };
 
     function findScripture(need) {
@@ -293,7 +301,6 @@ function googleTranslateElementInit() {
         document.getElementById('bible-iframe').src = `https://www.biblegateway.com/passage/?search=${currentNeedVerse}&version=ERV-NE`;
     }
 
-    // JSONP Loader for Daily Verse
     const script = document.createElement('script');
     script.src = "https://www.biblegateway.com/votd/votd.asp?format=json&version=ERV-NE&callback=updateDailyBread";
     document.body.appendChild(script);
