@@ -22,81 +22,162 @@
             --text-main: #e0e0e0;
         }
 
-        body { font-family: 'Poppins', sans-serif; margin: 0; background: var(--bg); color: var(--text-main); transition: 0.3s; padding-bottom: 220px; }
-        
-        /* HEADER */
-        .top-nav {
-            background: linear-gradient(135deg, var(--ag-blue) 0%, #003366 100%);
-            padding: 10px 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: white;
-            position: sticky; top: 0; z-index: 5001;
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            margin: 0; 
+            background: var(--bg); 
+            color: var(--text-main); 
+            transition: 0.3s; 
+            padding-bottom: 240px; /* Essential for floating footer */
         }
-
+        
+        /* HEADER - GLOWING WAVE EFFECT */
         header {
-            background: linear-gradient(135deg, var(--ag-blue) 0%, #003366 100%);
-            padding: 40px 20px;
+            background: linear-gradient(270deg, var(--ag-blue), var(--ag-red), var(--ag-blue));
+            background-size: 400% 400%;
+            animation: gradientWave 10s ease infinite;
+            padding: 55px 20px;
             text-align: center;
             color: white;
-            border-bottom: 6px solid var(--ag-red);
+            border-bottom: 6px solid var(--ag-gold);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+        }
+
+        @keyframes gradientWave {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         header h1 {
             font-family: 'Montserrat', sans-serif;
-            font-size: 2.6rem;
+            font-size: 2.8rem;
             font-weight: 900;
             margin: 0;
             text-transform: uppercase;
-            line-height: 1.1;
+            line-height: 1.0;
+            letter-spacing: -1px;
+            text-shadow: 0 0 10px rgba(255,255,255,0.8);
+            animation: pulseGlow 2.5s ease-in-out infinite alternate;
         }
 
-        header .nepali-brand { color: var(--ag-gold); font-weight: 600; font-size: 1.2rem; display: block; margin-top: 10px; }
+        @keyframes pulseGlow {
+            from { text-shadow: 0 0 10px #fff, 0 0 20px var(--ag-gold); }
+            to { text-shadow: 0 0 20px #fff, 0 0 40px var(--ag-red); }
+        }
 
-        #google_translate_element { background: white; border-radius: 5px; padding: 2px; min-width: 150px; }
+        header .nepali-brand { 
+            color: white; 
+            font-weight: 600; 
+            font-size: 1.3rem; 
+            display: block; 
+            margin-top: 15px; 
+            opacity: 0.95; 
+            letter-spacing: 1px;
+        }
 
-        /* TABS */
-        .nav-tabs { display: flex; background: var(--card-bg); box-shadow: 0 2px 10px rgba(0,0,0,0.1); overflow-x: auto; }
-        .tab { flex: 1; padding: 18px 10px; text-align: center; cursor: pointer; font-size: 0.75rem; font-weight: 700; color: #777; border-bottom: 4px solid transparent; min-width: 90px; white-space: nowrap; }
-        .tab.active { border-bottom: 4px solid var(--ag-red); color: var(--ag-blue); }
+        .top-nav { 
+            background: var(--ag-blue); 
+            padding: 10px 15px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: sticky;
+            top: 0;
+            z-index: 5002;
+        }
+        #google_translate_element { background: white; border-radius: 5px; padding: 2px; }
+
+        /* TABS - BULKY & EXPLOSIVE */
+        .nav-tabs { 
+            display: flex; 
+            background: transparent; 
+            padding: 12px; 
+            gap: 12px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .nav-tabs::-webkit-scrollbar { display: none; }
+
+        .tab { 
+            flex: 1; 
+            padding: 22px 15px; 
+            text-align: center; 
+            cursor: pointer; 
+            font-size: 0.8rem; 
+            font-weight: 800; 
+            color: white; 
+            background: var(--ag-blue);
+            border-radius: 18px; 
+            box-shadow: 0 5px 0 #000; 
+            min-width: 115px; 
+            white-space: nowrap; 
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+        }
+
+        .tab:active { transform: translateY(4px); box-shadow: 0 1px 0 #000; }
+
+        .tab.active { 
+            background: var(--ag-red); 
+            box-shadow: 0 5px 0 #800000, 0 0 20px rgba(198, 40, 40, 0.4);
+            transform: scale(1.05) translateY(-2px);
+        }
 
         .container { max-width: 1000px; margin: 15px auto; padding: 0 15px; }
-        .card { background: var(--card-bg); border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); display: none; overflow: hidden; }
+        .card { 
+            background: var(--card-bg); 
+            border-radius: 30px; 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1); 
+            display: none; 
+            overflow: hidden; 
+            animation: explodeIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        }
         .card.active { display: block; }
 
-        .viewer-frame { width: 100%; height: 70vh; border: none; }
+        @keyframes explodeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
 
-        /* SPIRITUAL NEEDS SECTION */
-        .spiritual-needs { margin-top: 10px; background: #fdfdfd; padding: 20px; border-radius: 15px; border: 1px solid #eee; }
-        .needs-select { width: 100%; padding: 12px; border-radius: 8px; border: 2px solid var(--ag-blue); font-family: 'Poppins', sans-serif; margin-top: 10px; font-size: 1rem; }
-        .scripture-result { margin-top: 15px; padding: 20px; background: #fff8e1; border-radius: 10px; border-left: 5px solid var(--ag-gold); display: none; }
-        .verse-list { list-style-type: none; padding: 0; margin: 10px 0; }
-        .verse-list li { margin-bottom: 8px; font-size: 1.05rem; font-style: italic; color: #444; }
+        .viewer-frame { width: 100%; height: 75vh; border: none; }
+
+        /* SPIRITUAL NEEDS */
+        .spiritual-needs { margin-top: 10px; background: #fdfdfd; padding: 25px; border-radius: 25px; border: 2px solid #eee; }
+        .needs-select { width: 100%; padding: 18px; border-radius: 15px; border: 3px solid var(--ag-blue); font-family: 'Poppins'; font-weight: 800; font-size: 1rem; color: var(--ag-blue); }
 
         /* FIXED FOOTER */
-        .fixed-footer { position: fixed; bottom: 0; left: 0; right: 0; background: var(--ag-blue); color: white; border-top: 5px solid var(--ag-red); z-index: 5000; }
-        .social-bar { display: flex; justify-content: center; gap: 20px; padding: 10px; background: rgba(0,0,0,0.2); }
-        .social-link { color: white; text-decoration: none; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; }
-        .scripture-box { padding: 18px 25px; text-align: center; }
-        .scripture-tag { font-size: 0.75rem; color: var(--ag-gold); font-weight: 800; text-transform: uppercase; margin-bottom: 6px; display: block; }
-        #daily-bread-text { font-size: 0.95rem; line-height: 1.5; font-style: italic; }
+        .fixed-footer { 
+            position: fixed; bottom: 0; left: 0; right: 0; 
+            background: var(--ag-blue); color: white; 
+            border-top: 6px solid var(--ag-gold); z-index: 5000; 
+        }
+        .social-bar { display: flex; justify-content: center; gap: 30px; padding: 12px; background: rgba(0,0,0,0.2); }
+        .social-link { color: white; text-decoration: none; font-size: 0.85rem; font-weight: 900; text-transform: uppercase; }
+        
+        .scripture-box { padding: 20px 25px; text-align: center; }
+        .scripture-tag { font-size: 0.75rem; color: var(--ag-gold); font-weight: 900; text-transform: uppercase; margin-bottom: 8px; display: block; letter-spacing: 1px; }
+        #daily-bread-text { font-size: 1rem; line-height: 1.6; font-style: italic; font-weight: 400; }
 
-        .btn { display: block; width: 100%; padding: 15px; border-radius: 10px; text-decoration: none; color: white; font-weight: bold; margin-bottom: 10px; text-align: center; }
+        /* BUTTONS & LISTS */
+        .btn { display: block; width: 100%; padding: 20px; border-radius: 15px; text-decoration: none; color: white; font-weight: 900; margin-bottom: 15px; text-align: center; box-shadow: 0 5px 0 rgba(0,0,0,0.3); transition: 0.2s; }
         .btn-red { background: var(--ag-red); }
         .btn-blue { background: var(--ag-blue); }
-        .leader-box { display: flex; align-items: center; background: rgba(0,0,0,0.03); padding: 15px; border-radius: 12px; margin-bottom: 10px; border-left: 5px solid var(--ag-blue); }
+        .btn:active { transform: translateY(3px); box-shadow: 0 2px 0 rgba(0,0,0,0.2); }
+
+        .leader-box { display: flex; align-items: center; background: rgba(0,0,0,0.03); padding: 18px; border-radius: 18px; margin-bottom: 15px; border-left: 8px solid var(--ag-blue); }
+        .leader-info b { font-size: 1.15rem; color: var(--ag-blue); display: block; }
     </style>
 </head>
 <body>
 
 <div class="top-nav">
-    <div onclick="toggleDarkMode()" style="cursor:pointer; font-size: 1.5rem;">🌓</div>
+    <div onclick="toggleDarkMode()" style="cursor:pointer; font-size: 1.6rem; color: white;">🌓</div>
     <div id="google_translate_element"></div>
 </div>
 
 <header>
-    <h1>Awakening Generations Church</h1>
+    <h1>Awakening Generations</h1>
     <span class="nepali-brand">अवेकनिङ जेनेरेसन चर्च</span>
 </header>
 
@@ -109,60 +190,56 @@
 </div>
 
 <div class="container">
-    <div id="calendar" class="card active"><iframe src="https://calendar.google.com/calendar/embed?src=Agchurch4e%40gmail.com&ctz=America%2FChicago" class="viewer-frame"></iframe></div>
+    <div id="calendar" class="card active">
+        <iframe src="https://calendar.google.com/calendar/embed?src=Agchurch4e%40gmail.com&ctz=America%2FChicago" class="viewer-frame"></iframe>
+    </div>
+
     <div id="bible" class="card">
-    <iframe 
-        src="https://www.biblegateway.com/passage/?search=John+1&version=ERV-NE" 
-        class="viewer-frame">
-    </iframe>
-</div>
-    <div id="songs" class="card"><iframe src="https://www.nepalichristiansongs.com/" class="viewer-frame"></iframe></div>
+        <iframe src="https://www.biblegateway.com/passage/?search=John+1&version=ERV-NE" class="viewer-frame" id="bible-iframe"></iframe>
+    </div>
+
+    <div id="songs" class="card">
+        <iframe src="https://www.nepalichristiansongs.com/" class="viewer-frame"></iframe>
+    </div>
     
-    <div id="prayer" class="card" style="padding: 25px;">
-        <h2 style="text-align:center;">Prayer & Spiritual Care</h2>
-        <a href="sms:+16059887105" class="btn btn-red">TEXT PRAYER TEAM: (605) 988-7105</a>
+    <div id="prayer" class="card" style="padding: 30px;">
+        <h2 style="text-align:center; font-family:'Montserrat';">Spiritual Care</h2>
+        <a href="sms:+16059887105" class="btn btn-red">TEXT PRAYER TEAM</a>
         
         <div class="spiritual-needs">
-            <h3 style="margin-top:0;">Where to look in the Bible when...</h3>
-            <p style="font-size:0.85rem; color:#666;">Choose a need to see multiple scriptures for prayer:</p>
+            <h3 style="margin-top:0;">Divine Promises</h3>
+            <p style="font-size:0.9rem; color:#666;">Choose a situation to receive God's Word:</p>
             <select class="needs-select" onchange="findScripture(this.value)">
-                <option value="">-- Select Your Situation --</option>
-                <optgroup label="Life Struggles">
-                    <option value="anxious">I am Anxious / Worried</option>
-                    <option value="lonely">I feel Lonely</option>
-                    <option value="angry">I am Struggling with Anger</option>
-                    <option value="depressed">I feel Depressed / Discouraged</option>
-                    <option value="grieving">I am Grieving</option>
-                    <option value="guilty">I feel Guilty / Need Forgiveness</option>
-                </optgroup>
-                <optgroup label="Physical & Financial">
-                    <option value="sick">I am Sick or in Pain</option>
-                    <option value="financial">I have Financial Troubles</option>
-                    <option value="weak">I need Physical/Spiritual Strength</option>
-                </optgroup>
-                <optgroup label="Faith Journey">
-                    <option value="doubt">I am Doubting</option>
-                    <option value="direction">I need God's Direction</option>
-                    <option value="tempted">I am being Tempted</option>
-                    <option value="peace">I need Inner Peace</option>
-                </optgroup>
+                <option value="">-- How are you feeling? --</option>
+                <option value="anxious">Anxious / Worried</option>
+                <option value="lonely">Lonely</option>
+                <option value="angry">Angry / Frustrated</option>
+                <option value="sick">Sick / In Pain</option>
+                <option value="weak">Need Strength</option>
+                <option value="grieving">Grieving / Sad</option>
+                <option value="direction">Need Direction</option>
+                <option value="guilty">Need Forgiveness</option>
             </select>
-
-            <div id="need-result" class="scripture-result">
-                <span id="need-label" style="font-weight:bold; color:var(--ag-red); display:block; margin-bottom:5px; font-size: 1.2rem;"></span>
-                <ul id="verse-list" class="verse-list"></ul>
-                <button onclick="openBibleFromNeed()" style="margin-top:12px; padding:12px; border-radius:8px; border:none; background:var(--ag-blue); color:white; cursor:pointer; font-weight:bold; width:100%;">Read First Chapter in Bible Tab</button>
+            <div id="need-result" style="margin-top:20px; padding:20px; background:#fff8e1; border-radius:20px; border-left:10px solid var(--ag-gold); display:none;">
+                <span id="need-label" style="font-weight:900; color:var(--ag-red); font-size:1.2rem; display:block; margin-bottom:10px;"></span>
+                <ul id="verse-list" style="padding-left:20px; font-style:italic; font-size:1.1rem; line-height:1.8;"></ul>
+                <button onclick="openBibleFromNeed()" style="width:100%; padding:20px; background:var(--ag-blue); color:white; border:none; border-radius:15px; font-weight:900; cursor:pointer; margin-top:15px; text-transform:uppercase;">Read Full Chapter</button>
             </div>
         </div>
     </div>
 
-    <div id="about" class="card" style="padding: 30px;">
-        <h2 style="color:var(--ag-red); margin-top:0;">Our 4-E Vision</h2>
-        <p><b>Equip • Evangelize • Exalt • Edify</b></p>
-        <h3 style="margin-top:20px;">Leadership</h3>
-        <div class="leader-box"><div><b>Ps. Santosh Sharma</b><br><small>Lead Pastor | (605) 323-5933</small></div></div>
-        <div class="leader-box"><div><b>Ps. Prem Rai</b><br><small>Youth Pastor | (605) 400-7152</small></div></div>
-        <p><b>Board:</b> Sarah Sharma, Rita Rai, Dinesh Rai, Anan Rai, Amulya Rai, Kissan Bhujel</p>
+    <div id="about" class="card" style="padding: 35px;">
+        <h2 style="color:var(--ag-red); margin-top:0; font-family:'Montserrat';">OUR 4-E VISION</h2>
+        <p style="font-size:1.1rem; border-left:5px solid var(--ag-red); padding-left:15px;"><b>Equip • Evangelize • Exalt • Edify</b></p>
+        
+        <h3 style="margin-top:35px;">Leadership Team</h3>
+        <div class="leader-box"><div class="leader-info"><b>Ps. Santosh Sharma</b><small>Lead Pastor | (605) 323-5933</small></div></div>
+        <div class="leader-box"><div class="leader-info"><b>Ps. Prem Rai</b><small>Youth Pastor | (605) 400-7152</small></div></div>
+        <div class="leader-box"><div class="leader-info"><b>Roshani Lamsal Sharma</b><small>Secretary | (605) 774-5474</small></div></div>
+        <div class="leader-box"><div class="leader-info"><b>Hemon Sanyashi</b><small>Treasurer | (605) 400-8914</small></div></div>
+
+        <h3>Church Board</h3>
+        <p style="line-height:2.0; font-weight:600;">Ps. Sarah Sharma, Ps. Rita Rai, Dinesh Rai, Anan Rai, Amulya Rai, Kissan Bhujel</p>
     </div>
 </div>
 
@@ -172,8 +249,8 @@
         <a href="https://www.instagram.com/ag_nepali_church/" target="_blank" class="social-link">Instagram</a>
     </div>
     <div class="scripture-box">
-        <span class="scripture-tag">Daily Bread (Word of God)</span>
-        <div id="daily-bread-text">"The Word of the Lord endures forever."</div>
+        <span class="scripture-tag">Daily Bread (ERV-NE)</span>
+        <div id="daily-bread-text">"Gathering the Bread of Life..."</div>
     </div>
 </div>
 
@@ -188,107 +265,41 @@ function googleTranslateElementInit() {
     function toggleDarkMode() { document.body.classList.toggle('dark-mode'); }
     
     let currentNeedVerse = "";
-
     const needsMap = {
-        "anxious": { 
-            label: "Promises for Anxiety:", 
-            verses: ["Philippians 4:6-7", "1 Peter 5:7", "Matthew 6:34"], 
-            ref: "Philippians+4" 
-        },
-        "lonely": { 
-            label: "Promises for Loneliness:", 
-            verses: ["Psalm 23:4", "Hebrews 13:5", "Matthew 28:20"], 
-            ref: "Psalm+23" 
-        },
-        "angry": { 
-            label: "Promises for Anger:", 
-            verses: ["James 1:19-20", "Ephesians 4:26", "Proverbs 15:1"], 
-            ref: "James+1" 
-        },
-        "depressed": { 
-            label: "Promises for Depression:", 
-            verses: ["Psalm 42:11", "Isaiah 41:10", "Matthew 11:28"], 
-            ref: "Psalm+42" 
-        },
-        "grieving": { 
-            label: "Promises for Grief:", 
-            verses: ["Matthew 5:4", "Revelation 21:4", "Psalm 34:18"], 
-            ref: "Matthew+5" 
-        },
-        "guilty": { 
-            label: "Promises for Forgiveness:", 
-            verses: ["1 John 1:9", "Psalm 103:12", "Romans 8:1"], 
-            ref: "1+John+1" 
-        },
-        "sick": { 
-            label: "Promises for Healing:", 
-            verses: ["James 5:14-15", "Psalm 103:2-3", "Isaiah 53:5"], 
-            ref: "James+5" 
-        },
-        "financial": { 
-            label: "Promises for Provision:", 
-            verses: ["Philippians 4:19", "Psalm 34:10", "Matthew 6:33"], 
-            ref: "Philippians+4" 
-        },
-        "weak": { 
-            label: "Promises for Strength:", 
-            verses: ["Isaiah 40:31", "2 Corinthians 12:9", "Philippians 4:13"], 
-            ref: "Isaiah+40" 
-        },
-        "doubt": { 
-            label: "Promises for Faith:", 
-            verses: ["Mark 9:24", "Hebrews 11:1", "James 1:5-6"], 
-            ref: "Mark+9" 
-        },
-        "direction": { 
-            label: "Promises for Guidance:", 
-            verses: ["Proverbs 3:5-6", "Psalm 32:8", "James 1:5"], 
-            ref: "Proverbs+3" 
-        },
-        "tempted": { 
-            label: "Promises for Temptation:", 
-            verses: ["1 Corinthians 10:13", "James 4:7", "Matthew 26:41"], 
-            ref: "1+Corinthians+10" 
-        },
-        "peace": { 
-            label: "Promises for Peace:", 
-            verses: ["John 14:27", "Isaiah 26:3", "Romans 15:13"], 
-            ref: "John+14" 
-        }
+        "anxious": { label: "Promises for Anxiety:", verses: ["Philippians 4:6-7", "1 Peter 5:7", "Matthew 6:34"], ref: "Philippians+4" },
+        "lonely": { label: "Promises for Loneliness:", verses: ["Psalm 23:4", "Hebrews 13:5", "Isaiah 41:10"], ref: "Psalm+23" },
+        "angry": { label: "Promises for Anger:", verses: ["James 1:19-20", "Proverbs 15:1"], ref: "James+1" },
+        "sick": { label: "Promises for Healing:", verses: ["James 5:14-15", "Isaiah 53:5", "Psalm 103:3"], ref: "James+5" },
+        "weak": { label: "Promises for Strength:", verses: ["Isaiah 40:31", "Philippians 4:13", "2 Cor 12:9"], ref: "Isaiah+40" },
+        "grieving": { label: "Promises for Grief:", verses: ["Matthew 5:4", "Psalm 34:18", "John 11:25"], ref: "Matthew+5" },
+        "direction": { label: "Promises for Guidance:", verses: ["Proverbs 3:5-6", "Psalm 32:8"], ref: "Proverbs+3" },
+        "guilty": { label: "Promises for Forgiveness:", verses: ["1 John 1:9", "Psalm 103:12"], ref: "1+John+1" }
     };
 
     function findScripture(need) {
-        const resultDiv = document.getElementById('need-result');
+        const res = document.getElementById('need-result');
         const list = document.getElementById('verse-list');
         list.innerHTML = "";
-        
         if (need && needsMap[need]) {
             document.getElementById('need-label').innerText = needsMap[need].label;
-            needsMap[need].verses.forEach(v => {
-                let li = document.createElement("li");
-                li.innerText = v;
-                list.appendChild(li);
-            });
+            needsMap[need].verses.forEach(v => { let li = document.createElement("li"); li.innerText = v; list.appendChild(li); });
             currentNeedVerse = needsMap[need].ref;
-            resultDiv.style.display = "block";
-        } else {
-            resultDiv.style.display = "none";
-        }
+            res.style.display = "block";
+        } else { res.style.display = "none"; }
     }
 
     function openBibleFromNeed() {
         showTab('bible');
-        document.getElementById('bible-iframe').src = `https://www.biblegateway.com/passage/?search=${currentNeedVerse}&version=NNRV`;
+        document.getElementById('bible-iframe').src = `https://www.biblegateway.com/passage/?search=${currentNeedVerse}&version=ERV-NE`;
     }
 
+    // JSONP Loader for Daily Verse
     const script = document.createElement('script');
-    script.src = "https://www.biblegateway.com/votd/votd.asp?format=json&version=NNRV&callback=updateDailyBread";
+    script.src = "https://www.biblegateway.com/votd/votd.asp?format=json&version=ERV-NE&callback=updateDailyBread";
     document.body.appendChild(script);
 
     function updateDailyBread(data) {
-        if(data && data.votd) {
-            document.getElementById('daily-bread-text').innerHTML = `"${data.votd.text}" <br><strong>— ${data.votd.display_ref}</strong>`;
-        }
+        if(data && data.votd) { document.getElementById('daily-bread-text').innerHTML = `"${data.votd.text}" <br><strong>— ${data.votd.display_ref}</strong>`; }
     }
 
     function showTab(tabId) {
@@ -296,12 +307,9 @@ function googleTranslateElementInit() {
         document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
         document.getElementById(tabId).classList.add('active');
         const tabs = document.querySelectorAll('.tab');
-        tabs.forEach(tab => {
-            if(tab.innerText.toLowerCase().includes(tabId.toLowerCase())) tab.classList.add('active');
-        });
+        tabs.forEach(tab => { if(tab.innerText.toLowerCase().includes(tabId.toLowerCase())) tab.classList.add('active'); });
         window.scrollTo(0,0);
     }
 </script>
-
 </body>
 </html>
