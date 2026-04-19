@@ -22,120 +22,82 @@
             --text-main: #e0e0e0;
         }
 
-        body { 
-            font-family: 'Poppins', sans-serif; 
-            margin: 0; 
-            background: var(--bg); 
-            color: var(--text-main); 
-            transition: 0.4s; 
-            padding-bottom: 260px; /* Space for fixed YouVersion & Social footer */
-        }
+        body { font-family: 'Poppins', sans-serif; margin: 0; background: var(--bg); color: var(--text-main); transition: 0.3s; padding-bottom: 180px; }
         
-        /* BOLD PROFESSIONAL HEADER */
+        /* HEADER - BOLD & PROFESSIONAL */
+        .top-nav {
+            background: linear-gradient(135deg, var(--ag-blue) 0%, #003366 100%);
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 5001;
+        }
+
         header {
             background: linear-gradient(135deg, var(--ag-blue) 0%, #003366 100%);
-            padding: 45px 20px;
+            padding: 30px 20px;
             text-align: center;
             color: white;
             border-bottom: 6px solid var(--ag-red);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
 
         header h1 {
             font-family: 'Montserrat', sans-serif;
-            font-size: 2.6rem;
+            font-size: 2.4rem;
             font-weight: 900;
             margin: 0;
             text-transform: uppercase;
-            line-height: 1.0;
-            letter-spacing: -1px;
+            line-height: 1.1;
         }
 
-        header .nepali-brand {
-            color: var(--ag-gold);
-            font-weight: 600;
-            margin-top: 12px;
-            font-size: 1.2rem;
-            display: block;
-        }
+        header .nepali-brand { color: var(--ag-gold); font-weight: 600; font-size: 1.1rem; display: block; margin-top: 8px; }
 
-        .top-utility-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(0,0,0,0.15);
-            padding: 8px 20px;
-            backdrop-filter: blur(10px);
-        }
+        /* TRANSLATION DROPDOWN STYLING */
+        #google_translate_element { min-width: 140px; height: 30px; }
+        .goog-te-gadget-simple { background-color: white !important; border-radius: 4px; padding: 2px 5px !important; }
 
-        /* NAVIGATION TABS */
-        .nav-tabs { 
-            display: flex; 
-            background: var(--card-bg); 
-            position: sticky; 
-            top: 0; 
-            z-index: 1000; 
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1); 
-            overflow-x: auto; 
-        }
-        .nav-tabs::-webkit-scrollbar { display: none; }
+        /* TABS */
+        .nav-tabs { display: flex; background: var(--card-bg); box-shadow: 0 2px 10px rgba(0,0,0,0.1); overflow-x: auto; }
+        .tab { flex: 1; padding: 18px 10px; text-align: center; cursor: pointer; font-size: 0.75rem; font-weight: 700; color: #777; border-bottom: 4px solid transparent; min-width: 90px; white-space: nowrap; }
+        .tab.active { border-bottom: 4px solid var(--ag-red); color: var(--ag-blue); }
 
-        .tab { 
-            flex: 1; padding: 18px 10px; text-align: center; cursor: pointer; font-size: 0.75rem; 
-            font-weight: 700; color: #777; border-bottom: 4px solid transparent; 
-            min-width: 95px; white-space: nowrap; transition: 0.3s;
-        }
-        .tab.active { border-bottom: 4px solid var(--ag-red); color: var(--ag-blue); background: rgba(0,0,0,0.02); }
-
-        .container { max-width: 1000px; margin: 20px auto; padding: 0 15px; }
-        .card { background: var(--card-bg); border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); display: none; overflow: hidden; }
+        .container { max-width: 1000px; margin: 15px auto; padding: 0 15px; }
+        .card { background: var(--card-bg); border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); display: none; overflow: hidden; }
         .card.active { display: block; }
 
-        .viewer-frame { width: 100%; height: 70vh; border: none; background: #fff; }
+        .viewer-frame { width: 100%; height: 70vh; border: none; }
 
-        /* LEADERSHIP STYLING */
-        .leader-box { 
-            display: flex; align-items: center; background: rgba(0,0,0,0.03); 
-            padding: 15px; border-radius: 12px; margin-bottom: 12px; border-left: 5px solid var(--ag-blue); 
-        }
-        .leader-info b { font-size: 1.1rem; color: var(--ag-blue); display: block; }
-
-        /* FIXED FOOTER (YOUVERSION & SOCIAL) */
-        .footer-fixed {
+        /* FOOTER SCRIPTURE & SOCIAL */
+        .fixed-footer {
             position: fixed; bottom: 0; left: 0; right: 0;
-            z-index: 5000;
-            background: #ffffff;
+            background: var(--ag-blue);
+            color: white;
             border-top: 5px solid var(--ag-red);
-            box-shadow: 0 -10px 30px rgba(0,0,0,0.2);
-        }
-        .dark-mode .footer-fixed { background: #1e1e1e; }
-
-        .social-bar {
-            display: flex; justify-content: center; gap: 25px; padding: 10px; background: var(--ag-blue);
-        }
-        .social-link { color: white; text-decoration: none; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
-
-        .youversion-container {
-            padding: 10px;
-            display: flex;
-            justify-content: center;
-            min-height: 80px;
+            z-index: 5000;
         }
 
-        .btn { display: block; width: 100%; padding: 18px; border-radius: 12px; text-decoration: none; color: white; font-weight: bold; margin-bottom: 12px; text-align: center; }
+        .social-bar { display: flex; justify-content: center; gap: 20px; padding: 8px; background: rgba(0,0,0,0.2); }
+        .social-link { color: white; text-decoration: none; font-size: 0.75rem; font-weight: bold; }
+
+        .scripture-box { padding: 15px 20px; text-align: center; }
+        .scripture-tag { font-size: 0.7rem; color: var(--ag-gold); font-weight: 800; text-transform: uppercase; margin-bottom: 4px; display: block; }
+        #daily-word { font-size: 0.85rem; line-height: 1.4; font-style: italic; }
+
+        .btn { display: block; width: 100%; padding: 15px; border-radius: 10px; text-decoration: none; color: white; font-weight: bold; margin-bottom: 10px; text-align: center; }
         .btn-red { background: var(--ag-red); }
         .btn-blue { background: var(--ag-blue); }
 
-        /* Google Translate Visual Fixes */
-        #google_translate_element { color: white !important; }
-        .goog-te-gadget-simple { background-color: transparent !important; border: none !important; }
-        .goog-te-menu-value span { color: white !important; }
+        .leader-box { display: flex; align-items: center; background: rgba(0,0,0,0.03); padding: 12px; border-radius: 10px; margin-bottom: 8px; border-left: 5px solid var(--ag-blue); }
     </style>
 </head>
 <body>
 
-<div class="top-utility-bar">
-    <div onclick="toggleDarkMode()" style="cursor:pointer; font-size: 1.5rem; color: white;">🌓</div>
+<div class="top-nav">
+    <div onclick="toggleDarkMode()" style="cursor:pointer; font-size: 1.4rem;">🌓</div>
     <div id="google_translate_element"></div>
 </div>
 
@@ -145,60 +107,47 @@
 </header>
 
 <div class="nav-tabs">
-    <div class="tab active" onclick="showTab('calendar')">📅 Events</div>
-    <div class="tab" onclick="showTab('bible')">📖 Bible</div>
-    <div class="tab" onclick="showTab('songs')">🎵 Worship</div>
-    <div class="tab" onclick="showTab('prayer')">🙏 Prayer</div>
-    <div class="tab" onclick="showTab('about')">ℹ️ About Us</div>
+    <div class="tab active" onclick="showTab('calendar')">📅 EVENTS</div>
+    <div class="tab" onclick="showTab('bible')">📖 BIBLE</div>
+    <div class="tab" onclick="showTab('songs')">🎵 WORSHIP</div>
+    <div class="tab" onclick="showTab('prayer')">🙏 PRAYER</div>
+    <div class="tab" onclick="showTab('about')">ℹ️ ABOUT US</div>
 </div>
 
 <div class="container">
-    <div id="calendar" class="card active">
-        <iframe src="https://calendar.google.com/calendar/embed?src=Agchurch4e%40gmail.com&ctz=America%2FChicago" class="viewer-frame"></iframe>
-    </div>
-
-    <div id="bible" class="card">
-        <iframe src="https://www.biblegateway.com/passage/?search=John+1&version=NNRV" class="viewer-frame"></iframe>
-    </div>
-
-    <div id="songs" class="card">
-        <iframe src="https://www.nepalichristiansongs.com/" class="viewer-frame"></iframe>
-    </div>
-
-    <div id="prayer" class="card" style="padding: 40px;">
+    <div id="calendar" class="card active"><iframe src="https://calendar.google.com/calendar/embed?src=Agchurch4e%40gmail.com&ctz=America%2FChicago" class="viewer-frame"></iframe></div>
+    <div id="bible" class="card"><iframe src="https://www.biblegateway.com/passage/?search=John+1&version=NNRV" class="viewer-frame"></iframe></div>
+    <div id="songs" class="card"><iframe src="https://www.nepalichristiansongs.com/" class="viewer-frame"></iframe></div>
+    
+    <div id="prayer" class="card" style="padding: 25px;">
         <h2 style="text-align:center;">Prayer Support</h2>
         <a href="sms:+16059887105" class="btn btn-red">TEXT PRAYER TEAM: (605) 988-7105</a>
         <a href="mailto:Agchurch4e@gmail.com" class="btn btn-blue">EMAIL PRAYER REQUEST</a>
     </div>
 
-    <div id="about" class="card" style="padding: 40px;">
+    <div id="about" class="card" style="padding: 25px;">
         <h2 style="color:var(--ag-red); margin-top:0;">Our 4-E Vision</h2>
-        <p style="background: #fff8f8; padding: 25px; border-radius: 20px; border-left: 8px solid var(--ag-red);">
-            "To <b>Equip</b>, <b>Evangelize</b>, <b>Exalt</b>, and <b>Edify</b> the Nepali community."
-        </p>
+        <p><b>Equip, Evangelize, Exalt, Edify.</b></p>
         
-        <h3>Leadership Team</h3>
-        <div class="leader-box"><div class="leader-info"><b>Ps. Santosh Sharma</b><br><small>Lead Pastor | (605) 323-5933</small></div></div>
-        <div class="leader-box"><div class="leader-info"><b>Ps. Prem Rai</b><br><small>Youth Pastor | (605) 400-7152</small></div></div>
-        <div class="leader-box"><div class="leader-info"><b>Roshani Lamsal Sharma</b><small>Secretary | (605) 774-5474</small></div></div>
-        <div class="leader-box"><div class="leader-info"><b>Hemon Sanyashi</b><small>Treasurer | (605) 400-8914</small></div></div>
-
+        <h3>Leadership</h3>
+        <div class="leader-box"><div><b>Ps. Santosh Sharma</b><br><small>Lead Pastor | (605) 323-5933</small></div></div>
+        <div class="leader-box"><div><b>Ps. Prem Rai</b><br><small>Youth Pastor | (605) 400-7152</small></div></div>
+        <div class="leader-box"><div><b>Roshani Lamsal Sharma</b><br><small>Secretary | (605) 774-5474</small></div></div>
+        <div class="leader-box"><div><b>Hemon Sanyashi</b><br><small>Treasurer | (605) 400-8914</small></div></div>
+        
         <h3>Church Board</h3>
-        <p>Ps. Sarah Sharma, Ps. Rita Rai, Dinesh Rai, Anan Rai, Amulya Rai, Kissan Bhujel</p>
+        <p style="font-size: 0.9rem;">Ps. Sarah Sharma, Ps. Rita Rai, Dinesh Rai, Anan Rai, Amulya Rai, Kissan Bhujel</p>
     </div>
 </div>
 
-<div class="footer-fixed">
-    <div class="youversion-container">
-        <loading-verse-of-the-day-widget 
-            id="yv-votd-widget" 
-            version-id="1154" 
-            theme="light">
-        </loading-verse-of-the-day-widget>
-    </div>
+<div class="fixed-footer">
     <div class="social-bar">
         <a href="https://www.facebook.com/AGCNepali" target="_blank" class="social-link">Facebook</a>
         <a href="https://www.instagram.com/ag_nepali_church/" target="_blank" class="social-link">Instagram</a>
+    </div>
+    <div class="scripture-box">
+        <span class="scripture-tag">Daily Word (NNRV)</span>
+        <div id="daily-word">Loading the Bread of Life...</div>
     </div>
 </div>
 
@@ -206,23 +155,29 @@
 function googleTranslateElementInit() {
   new google.translate.TranslateElement({
     pageLanguage: 'en',
-    includedLanguages: 'ne,hi,en', // Just Nepali, Hindi, and English
-    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-    autoDisplay: false
+    includedLanguages: 'ne,hi,en',
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
   }, 'google_translate_element');
 }
 </script>
 <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-<script async src="https://www.bible.com/assets/verse-of-the-day/widget.js"></script>
-
 <script>
-    function toggleDarkMode() { 
-        document.body.classList.toggle('dark-mode'); 
-        const yv = document.getElementById('yv-votd-widget');
-        if(yv) yv.setAttribute('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
-    }
+    function toggleDarkMode() { document.body.classList.toggle('dark-mode'); }
     
+    // Fixed Daily Bread Loader
+    function loadVotd() {
+        fetch("https://www.biblegateway.com/votd/votd.asp?format=json&version=NNRV")
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('daily-word').innerHTML = `"${data.votd.text}" <br><strong>— ${data.votd.display_ref}</strong>`;
+            })
+            .catch(err => {
+                document.getElementById('daily-word').innerText = "Seek the LORD while he may be found; call on him while he is near. — Isaiah 55:6";
+            });
+    }
+    loadVotd();
+
     function showTab(tabId) {
         document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
         document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
