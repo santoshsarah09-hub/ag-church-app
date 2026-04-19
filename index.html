@@ -32,9 +32,7 @@
             justify-content: space-between;
             align-items: center;
             color: white;
-            position: sticky;
-            top: 0;
-            z-index: 5001;
+            position: sticky; top: 0; z-index: 5001;
         }
 
         header {
@@ -72,7 +70,9 @@
         /* SPIRITUAL NEEDS SECTION */
         .spiritual-needs { margin-top: 10px; background: #fdfdfd; padding: 20px; border-radius: 15px; border: 1px solid #eee; }
         .needs-select { width: 100%; padding: 12px; border-radius: 8px; border: 2px solid var(--ag-blue); font-family: 'Poppins', sans-serif; margin-top: 10px; font-size: 1rem; }
-        .scripture-result { margin-top: 15px; padding: 15px; background: #fff8e1; border-radius: 10px; border-left: 5px solid var(--ag-gold); display: none; }
+        .scripture-result { margin-top: 15px; padding: 20px; background: #fff8e1; border-radius: 10px; border-left: 5px solid var(--ag-gold); display: none; }
+        .verse-list { list-style-type: none; padding: 0; margin: 10px 0; }
+        .verse-list li { margin-bottom: 8px; font-size: 1.05rem; font-style: italic; color: #444; }
 
         /* FIXED FOOTER */
         .fixed-footer { position: fixed; bottom: 0; left: 0; right: 0; background: var(--ag-blue); color: white; border-top: 5px solid var(--ag-red); z-index: 5000; }
@@ -96,7 +96,7 @@
 </div>
 
 <header>
-    <h1>Awakening Generations Church</h1>
+    <h1>Awakening Generations</h1>
     <span class="nepali-brand">अवेकनिङ जेनेरेसन चर्च</span>
 </header>
 
@@ -119,36 +119,34 @@
         
         <div class="spiritual-needs">
             <h3 style="margin-top:0;">Where to look in the Bible when...</h3>
-            <p style="font-size:0.85rem; color:#666;">Choose your current situation to see God's Word:</p>
+            <p style="font-size:0.85rem; color:#666;">Choose a need to see multiple scriptures for prayer:</p>
             <select class="needs-select" onchange="findScripture(this.value)">
                 <option value="">-- Select Your Situation --</option>
-                <optgroup label="Emotions">
+                <optgroup label="Life Struggles">
                     <option value="anxious">I am Anxious / Worried</option>
                     <option value="lonely">I feel Lonely</option>
-                    <option value="angry">I am Angry</option>
+                    <option value="angry">I am Struggling with Anger</option>
                     <option value="depressed">I feel Depressed / Discouraged</option>
-                    <option value="grieving">I am Grieving a loss</option>
-                    <option value="guilty">I feel Guilty</option>
+                    <option value="grieving">I am Grieving</option>
+                    <option value="guilty">I feel Guilty / Need Forgiveness</option>
                 </optgroup>
-                <optgroup label="Life Challenges">
+                <optgroup label="Physical & Financial">
                     <option value="sick">I am Sick or in Pain</option>
                     <option value="financial">I have Financial Troubles</option>
-                    <option value="tempted">I am being Tempted</option>
-                    <option value="persecuted">I am being Treated Unfairly</option>
-                    <option value="direction">I need Direction / Wisdom</option>
+                    <option value="weak">I need Physical/Spiritual Strength</option>
                 </optgroup>
-                <optgroup label="Faith & Growth">
-                    <option value="doubt">I am Doubting my Faith</option>
+                <optgroup label="Faith Journey">
+                    <option value="doubt">I am Doubting</option>
+                    <option value="direction">I need God's Direction</option>
+                    <option value="tempted">I am being Tempted</option>
                     <option value="peace">I need Inner Peace</option>
-                    <option value="strength">I need Strength to go on</option>
-                    <option value="gratitude">I want to give Thanks</option>
                 </optgroup>
             </select>
 
             <div id="need-result" class="scripture-result">
-                <span id="need-label" style="font-weight:bold; color:var(--ag-red); display:block; margin-bottom:5px;"></span>
-                <span id="need-verse" style="font-style:italic; font-size:1.1rem; display:block;"></span>
-                <button onclick="openBibleFromNeed()" style="margin-top:12px; padding:10px 15px; border-radius:8px; border:none; background:var(--ag-blue); color:white; cursor:pointer; font-weight:bold; width:100%;">Read Full Chapter in Bible Tab</button>
+                <span id="need-label" style="font-weight:bold; color:var(--ag-red); display:block; margin-bottom:5px; font-size: 1.2rem;"></span>
+                <ul id="verse-list" class="verse-list"></ul>
+                <button onclick="openBibleFromNeed()" style="margin-top:12px; padding:12px; border-radius:8px; border:none; background:var(--ag-blue); color:white; cursor:pointer; font-weight:bold; width:100%;">Read First Chapter in Bible Tab</button>
             </div>
         </div>
     </div>
@@ -159,8 +157,7 @@
         <h3 style="margin-top:20px;">Leadership</h3>
         <div class="leader-box"><div><b>Ps. Santosh Sharma</b><br><small>Lead Pastor | (605) 323-5933</small></div></div>
         <div class="leader-box"><div><b>Ps. Prem Rai</b><br><small>Youth Pastor | (605) 400-7152</small></div></div>
-        <h3>Church Board</h3>
-        <p>Ps. Sarah Sharma, Ps. Rita Rai, Dinesh Rai, Anan Rai, Amulya Rai, Kissan Bhujel</p>
+        <p><b>Board:</b> Sarah Sharma, Rita Rai, Dinesh Rai, Anan Rai, Amulya Rai, Kissan Bhujel</p>
     </div>
 </div>
 
@@ -188,28 +185,85 @@ function googleTranslateElementInit() {
     let currentNeedVerse = "";
 
     const needsMap = {
-        "anxious": { label: "When Anxious:", verse: "Philippians 4:6-7", ref: "Philippians+4" },
-        "lonely": { label: "When Lonely:", verse: "Psalm 23", ref: "Psalm+23" },
-        "angry": { label: "When Angry:", verse: "Ephesians 4:26-32", ref: "Ephesians+4" },
-        "depressed": { label: "When Depressed:", verse: "Psalm 42", ref: "Psalm+42" },
-        "grieving": { label: "When Grieving:", verse: "2 Corinthians 1:3-4", ref: "2+Corinthians+1" },
-        "guilty": { label: "When feeling Guilty:", verse: "1 John 1:9", ref: "1+John+1" },
-        "sick": { label: "When Sick/In Pain:", verse: "James 5:14-15", ref: "James+5" },
-        "financial": { label: "In Financial Trouble:", verse: "Philippians 4:19", ref: "Philippians+4" },
-        "tempted": { label: "When Tempted:", verse: "1 Corinthians 10:13", ref: "1+Corinthians+10" },
-        "persecuted": { label: "When Persecuted:", verse: "Matthew 5:10-12", ref: "Matthew+5" },
-        "direction": { label: "Seeking Direction:", verse: "Proverbs 3:5-6", ref: "Proverbs+3" },
-        "doubt": { label: "When Doubting:", verse: "Mark 9:24", ref: "Mark+9" },
-        "peace": { label: "Need Inner Peace:", verse: "John 14:27", ref: "John+14" },
-        "strength": { label: "Need Strength:", verse: "Isaiah 40:31", ref: "Isaiah+40" },
-        "gratitude": { label: "Giving Thanks:", verse: "Psalm 100", ref: "Psalm+100" }
+        "anxious": { 
+            label: "Promises for Anxiety:", 
+            verses: ["Philippians 4:6-7", "1 Peter 5:7", "Matthew 6:34"], 
+            ref: "Philippians+4" 
+        },
+        "lonely": { 
+            label: "Promises for Loneliness:", 
+            verses: ["Psalm 23:4", "Hebrews 13:5", "Matthew 28:20"], 
+            ref: "Psalm+23" 
+        },
+        "angry": { 
+            label: "Promises for Anger:", 
+            verses: ["James 1:19-20", "Ephesians 4:26", "Proverbs 15:1"], 
+            ref: "James+1" 
+        },
+        "depressed": { 
+            label: "Promises for Depression:", 
+            verses: ["Psalm 42:11", "Isaiah 41:10", "Matthew 11:28"], 
+            ref: "Psalm+42" 
+        },
+        "grieving": { 
+            label: "Promises for Grief:", 
+            verses: ["Matthew 5:4", "Revelation 21:4", "Psalm 34:18"], 
+            ref: "Matthew+5" 
+        },
+        "guilty": { 
+            label: "Promises for Forgiveness:", 
+            verses: ["1 John 1:9", "Psalm 103:12", "Romans 8:1"], 
+            ref: "1+John+1" 
+        },
+        "sick": { 
+            label: "Promises for Healing:", 
+            verses: ["James 5:14-15", "Psalm 103:2-3", "Isaiah 53:5"], 
+            ref: "James+5" 
+        },
+        "financial": { 
+            label: "Promises for Provision:", 
+            verses: ["Philippians 4:19", "Psalm 34:10", "Matthew 6:33"], 
+            ref: "Philippians+4" 
+        },
+        "weak": { 
+            label: "Promises for Strength:", 
+            verses: ["Isaiah 40:31", "2 Corinthians 12:9", "Philippians 4:13"], 
+            ref: "Isaiah+40" 
+        },
+        "doubt": { 
+            label: "Promises for Faith:", 
+            verses: ["Mark 9:24", "Hebrews 11:1", "James 1:5-6"], 
+            ref: "Mark+9" 
+        },
+        "direction": { 
+            label: "Promises for Guidance:", 
+            verses: ["Proverbs 3:5-6", "Psalm 32:8", "James 1:5"], 
+            ref: "Proverbs+3" 
+        },
+        "tempted": { 
+            label: "Promises for Temptation:", 
+            verses: ["1 Corinthians 10:13", "James 4:7", "Matthew 26:41"], 
+            ref: "1+Corinthians+10" 
+        },
+        "peace": { 
+            label: "Promises for Peace:", 
+            verses: ["John 14:27", "Isaiah 26:3", "Romans 15:13"], 
+            ref: "John+14" 
+        }
     };
 
     function findScripture(need) {
         const resultDiv = document.getElementById('need-result');
+        const list = document.getElementById('verse-list');
+        list.innerHTML = "";
+        
         if (need && needsMap[need]) {
             document.getElementById('need-label').innerText = needsMap[need].label;
-            document.getElementById('need-verse').innerText = needsMap[need].verse;
+            needsMap[need].verses.forEach(v => {
+                let li = document.createElement("li");
+                li.innerText = v;
+                list.appendChild(li);
+            });
             currentNeedVerse = needsMap[need].ref;
             resultDiv.style.display = "block";
         } else {
@@ -236,7 +290,6 @@ function googleTranslateElementInit() {
         document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
         document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
         document.getElementById(tabId).classList.add('active');
-        // Update tab styling manually to ensure "Active" state is visible
         const tabs = document.querySelectorAll('.tab');
         tabs.forEach(tab => {
             if(tab.innerText.toLowerCase().includes(tabId.toLowerCase())) tab.classList.add('active');
