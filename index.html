@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Awakening Generations Church | Master Ministry App</title>
+
+    <link rel="manifest" href="manifest.webmanifest">
+    <meta name="theme-color" content="#001f3f">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="AG Church">
     
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:italic,wght@700&family=Space+Mono&display=swap" rel="stylesheet">
     
@@ -199,6 +208,14 @@
             animation: ag-pulse 1.5s infinite alternate;
         }
         @keyframes ag-pulse { from { opacity: 0.5; } to { opacity: 1; } }
+        /* --- INSTALL APP BUTTON --- */
+        #install-app-btn {
+            display: none; position: fixed; right: 16px; bottom: 16px; z-index: 9999;
+            background: var(--ag-gold); color: #001f3f; border: none; border-radius: 999px;
+            padding: 14px 22px; font: 700 0.95rem 'Poppins', sans-serif; cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+        }
+        #install-app-btn.show { display: block; }
     </style>
 
 </head>
@@ -211,6 +228,8 @@
     <!-- END OF LOADER -->
 
     <canvas id="aura-canvas"></canvas>
+
+    <button id="install-app-btn" type="button">📲 Install App</button>
 
     <div class="sticky-utility">
         <button class="back-to-home" id="main-home-trigger" onclick="closeMinistryTab()">
@@ -1324,6 +1343,35 @@ const spiritualLibrary = {
                 alert("Copy this URL to invite a friend: " + window.location.href);
             }
         }
+
+        /* --- INSTALL AS APP (PWA) --- */
+        if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
+            window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+        }
+        (function () {
+            const btn = document.getElementById('install-app-btn');
+            const standalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+            const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+            let deferred = null;
+            if (standalone) return;
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                deferred = e;
+                btn.classList.add('show');
+            });
+            if (isIOS) btn.classList.add('show');
+            btn.addEventListener('click', async () => {
+                if (deferred) {
+                    deferred.prompt();
+                    await deferred.userChoice;
+                    deferred = null;
+                    btn.classList.remove('show');
+                } else if (isIOS) {
+                    alert('To install: tap the Share button, then "Add to Home Screen".');
+                }
+            });
+            window.addEventListener('appinstalled', () => btn.classList.remove('show'));
+        })();
     </script>
 </body>
 </html>
